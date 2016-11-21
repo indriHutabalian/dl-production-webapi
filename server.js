@@ -25,6 +25,12 @@ server.use(function (request, response, next) {
 });
 
 //SET ROUTER DISINI
+var v1WindingQualitySamplingRouter = require('./src/routers/v1/spinning/winding/winding-quality-sampling-router');
+v1WindingQualitySamplingRouter.applyRoutes(server, "/v1/spinning/winding/winding-quality-samplings");
+
+var v1WindingQualitySamplingReportRouter = require('./src/routers/v1/spinning/winding/reports/winding-quality-sampling-report-router');
+v1WindingQualitySamplingReportRouter.applyRoutes(server, "/v1/spinning/winding/reports/winding-quality-samplings");
+
 
 server.listen(process.env.PORT, process.env.IP);
 console.log(`server created at ${process.env.IP}:${process.env.PORT}`)
