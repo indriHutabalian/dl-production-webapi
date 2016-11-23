@@ -41,6 +41,8 @@ router.get("/:id", passport, (request, response, next) => {
 
         manager.getSingleById(id)
             .then(doc => {
+                var date = new Date(doc.date);
+                doc.date = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
                 var result = resultFormatter.ok(apiVersion, 200, doc);
                 response.send(200, result);
             })
