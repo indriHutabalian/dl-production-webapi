@@ -26,5 +26,10 @@ server.use(function (request, response, next) {
 
 //SET ROUTER DISINI
 
+//WINDING PRODUCTION OUTPUT
+var v1WindingProductionOutputByUserRouter = require('./src/routers/v1/spinning/winding/winding-production-output/winding-production-output-by-user-router');
+v1WindingProductionOutputByUserRouter.applyRoutes(server,   "/v1/spinning/winding/production-outputs/by-user");
+
+
 server.listen(process.env.PORT, process.env.IP);
 console.log(`server created at ${process.env.IP}:${process.env.PORT}`)
