@@ -12,8 +12,16 @@ router.get("/", passport, function (request, response, next) {
         var manager = new WindingQualitySamplingManager(db, request.user);
         var sdate = request.params.dateFrom ? request.params.dateFrom : null;
         var edate = request.params.dateTo ? request.params.dateTo : null;
-        manager.getWindingQualitySamplingReportByDate(sdate, edate)
+        var spinning = request.params.spinning ? request.params.spinning : null;
+        var machine = request.params.machine ? request.params.machine : null;
+        var uster = request.params.uster ? request.params.uster : null;
+        var grade = request.params.grade ? request.params.grade : null;
+        manager.getWindingQualitySamplingReportByDate(sdate, edate, spinning, machine, uster, grade)
             .then(docs => {
+                    var dateFormat = "DD MMM YYYY";
+                    var locale = 'id-ID';
+                    var moment = require('moment');
+                    moment.locale(locale);
                     if ((request.headers.accept || '').toString().indexOf("application/xls") < 0) {
                         for(var a in docs)
                         {
@@ -33,10 +41,6 @@ router.get("/", passport, function (request, response, next) {
                         var result = resultFormatter.ok(apiVersion, 200, docs);
                         response.send(200, result);
                     }else{
-                        var dateFormat = "DD MMMM YYYY";
-                        //var locale = 'id-ID';
-                        // var moment = require('moment');
-                        // moment.locale(locale);
                         var data = [];
                         var index = 0;
                         for(var spinningProductQuality of docs){
@@ -55,6 +59,8 @@ router.get("/", passport, function (request, response, next) {
                             var ipi = ipi2 + '.' + ipi1[1];
                             var item = {
                                 "No": index,
+                                "Spinning": spinningProductQuality.spinning,
+                                "Tanggal Pengetesan": moment(new Date(spinningProductQuality.date)).format(dateFormat),
                                 "Mesin" : spinningProductQuality.machine.name,
                                 "Jenis Benang" : spinningProductQuality.uster.code,
                                 "U%" : u,
@@ -67,6 +73,8 @@ router.get("/", passport, function (request, response, next) {
                         }
                         var options = {
                             "No": "number",
+                            "spinning" : "string",
+                            "Tanggal Pengetesan" : "string",
                             "Mesin" : "string",
                             "Jenis Benang" : "string",
                             "U%" : "number",
@@ -76,13 +84,13 @@ router.get("/", passport, function (request, response, next) {
                             "Kualifikasi" : "string"
                         }
                         if(sdate && edate){
-                            response.xls(`Laporan Kualitas Hasil Produksi Spinning ${sdate} - ${edate}.xlsx`, data, options);
+                            response.xls(`Laporan Kualitas Hasil Produksi Spinning ${moment(new Date(sdate)).format(dateFormat)} - ${moment(new Date(edate)).format(dateFormat)}.xlsx`, data, options);
                         }
                         else if(!sdate && edate){
-                            response.xls(`Laporan Kualitas Hasil Produksi Spinning sampai tanggal ${edate}.xlsx`, data, options);
+                            response.xls(`Laporan Kualitas Hasil Produksi Spinning sampai tanggal ${moment(new Date(edate)).format(dateFormat)}.xlsx`, data, options);
                         }
                         else if(sdate && !edate){
-                            response.xls(`Laporan Kualitas Hasil Produksi Spinning dari tanggal ${sdate}.xlsx`, data, options);
+                            response.xls(`Laporan Kualitas Hasil Produksi Spinning dari tanggal ${moment(new Date(sdate)).format(dateFormat)}.xlsx`, data, options);
                         }
                         else
                             response.xls(`Laporan Kualitas Hasil Produksi Spinning.xlsx`, data,options);
