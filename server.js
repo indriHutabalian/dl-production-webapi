@@ -36,6 +36,8 @@ v1WindingQualitySamplingReportRouter.applyRoutes(server, "/v1/spinning/winding/r
 var v1WindingProductionOutputByUserRouter = require('./src/routers/v1/spinning/winding/winding-production-output/winding-production-output-by-user-router');
 v1WindingProductionOutputByUserRouter.applyRoutes(server,   "/v1/spinning/winding/production-outputs/by-user");
 
+var v1LotMachineByProductMachineRouter = require('./src/routers/v1/spinning/winding/winding-production-output/lot-machine-by-product-machine-router');
+v1LotMachineByProductMachineRouter.applyRoutes(server,   "/v1/spinning/winding/search-lots");
 
 server.listen(process.env.PORT, process.env.IP);
 console.log(`server created at ${process.env.IP}:${process.env.PORT}`)
