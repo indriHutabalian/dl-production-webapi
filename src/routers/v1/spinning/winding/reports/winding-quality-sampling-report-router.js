@@ -59,7 +59,7 @@ router.get("/", passport, function (request, response, next) {
                             var ipi = ipi2 + '.' + ipi1[1];
                             var item = {
                                 "No": index,
-                                "Spinning": spinningProductQuality.spinning,
+                                "Spinning": spinningProductQuality.spinning.name,
                                 "Tanggal Pengetesan": moment(new Date(spinningProductQuality.date)).format(dateFormat),
                                 "Mesin" : spinningProductQuality.machine.name,
                                 "Jenis Benang" : spinningProductQuality.uster.code,
