@@ -62,7 +62,7 @@ router.get("/", passport, function (request, response, next) {
                                 "Spinning": spinningProductQuality.spinning.name,
                                 "Tanggal Pengetesan": moment(new Date(spinningProductQuality.date)).format(dateFormat),
                                 "Mesin" : spinningProductQuality.machine.name,
-                                "Jenis Benang" : spinningProductQuality.uster.code,
+                                "Jenis Benang" : spinningProductQuality.uster.product.name,
                                 "U%" : u,
                                 "Sys" : sys,
                                 "Elongation" : elongation,
