@@ -1,0 +1,44 @@
+{
+  "name": "dl-core-webapi",
+  "version": "1.0.0",
+  "description": "Dan Liris production RESTful api",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test/index.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "6.3.0",
+    "npm": "3.10.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danliris/dl-production-webapi.git"
+  },
+  "author": "Moonlay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danliris/dl-production-webapi/issues"
+  },
+"homepage": "https://github.com/danliris/dl-production-webapi#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "dl-module": "git+https://github.com/danliris/dl-module.git#dev",
+    "json2xls": "^0.1.2",
+    "mongo-factory": "^1.0.0",
+    "mongodb": "^2.2.5",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.1.0",
+    "passport-local": "^1.0.0",
+    "restify": "^4.1.1",
+    "restify-router": "^0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.0",
+    "should": "^10.0.0",
+    "supertest": "^2.0.0"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
