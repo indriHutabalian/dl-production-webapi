@@ -18,6 +18,8 @@ router.get("/", passport, function (request, response, next) {
         var lastDay = request.params.lastDay;
         var unitId = request.params.unitId;
 
+        var x;
+
         manager.getDailySpinningProductionReport(firstDay, lastDay, unitId)
             .then(data => {
                 var result = resultFormatter.ok(apiVersion, 200, data);
