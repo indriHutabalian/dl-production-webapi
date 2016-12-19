@@ -7,7 +7,7 @@ var resultFormatter = require("../../../result-formatter");
 var passport = require('../../../passports/jwt-passport');
 const apiVersion = '1.0.0';
 
-router.get("/", passport, (request, response, next) => {
+router.get("/", passport,function (request, response, next) {
     db.get().then(db => {
         var manager = new ProductionOrderManager(db, request.user);
 
@@ -47,17 +47,24 @@ var handlePdfRequest = function (request, response, next) {
         var manager = new ProductionOrderManager(db, request.user);
 
         var id = request.params.id;
+        var no=request.params.no;
         var dateFormat = "DD MMMM YYYY";
         var locale = 'id-ID';
         var moment = require('moment');
         moment.locale(locale);
-        manager.pdf(id)
+        manager.pdf(id,no)
             .then(docBinary => {
                 manager.getSingleById(id)
-                    .then(doc => {
+                    .then(docs => {
+                        var doc={}
+                        for(var i of docs.productionOrders){
+                            if(i.orderNo==no){
+                                doc=i;break;
+                            }
+                        }
                         response.writeHead(200, {
                             'Content-Type': 'application/pdf',
-                            'Content-Disposition': `attachment; filename=${doc.no}.pdf`,
+                            'Content-Disposition': `attachment; filename=${doc.orderNo}.pdf`,
                             'Content-Length': docBinary.length
                         });
                         response.end(docBinary);
@@ -167,9 +174,15 @@ router.del('/:id', passport, (request, response, next) => {
         var manager = new ProductionOrderManager(db, request.user);
 
         var id = request.params.id;
-        var data = request.body;
-
-        manager.delete(data)
+        var no= request.params.no;
+        var data="";
+        manager.getSingleById(id).then(doc=>{
+            for(var i of doc.productionOrders){
+                if(i.orderNo==no){
+                    var data=i;break;
+                }
+            }
+            manager.delete(data)
             .then(docId => {
                 var result = resultFormatter.ok(apiVersion, 204);
                 response.send(204, result);
@@ -178,6 +191,9 @@ router.del('/:id', passport, (request, response, next) => {
                 var error = resultFormatter.fail(apiVersion, 400, e);
                 response.send(400, error);
             });
+        })
+
+        
     });
 });
 
