@@ -179,7 +179,7 @@ router.del('/:id', passport, (request, response, next) => {
         manager.getSingleById(id).then(doc=>{
             for(var i of doc.productionOrders){
                 if(i.orderNo==no){
-                    var data=i;break;
+                    data=i;break;
                 }
             }
             manager.delete(data)
@@ -191,7 +191,7 @@ router.del('/:id', passport, (request, response, next) => {
                 var error = resultFormatter.fail(apiVersion, 400, e);
                 response.send(400, error);
             });
-        })
+        });
 
         
     });
