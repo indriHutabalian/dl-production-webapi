@@ -145,8 +145,8 @@ router.post('/', passport, (request, response, next) => {
             .catch(e => {
                 var error = resultFormatter.fail(apiVersion, 400, e);
                 response.send(400, error);
-            })
-    })
+            });
+    });
 });
 
 router.put('/:id', passport, (request, response, next) => {
