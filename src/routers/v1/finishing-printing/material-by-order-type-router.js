@@ -15,14 +15,9 @@ router.get("/", passport, function (request, response, next) {
         var sorting = {
             "_updatedDate": -1
         };
-        var query = request.queryInfo;
-        var filter = {
-            "processType": query.filter.processType,
-            "material" : query.filter.material
-        };
-        query.order = sorting;
-        query.filter = filter;
-        manager.read(query)
+        var query = request.queryInfo.filter.orderTypeId;
+        var keyword= request.queryInfo.keyword;
+        manager.getMaterial(keyword,query)
             .then(docs => {
                 var result = resultFormatter.ok(apiVersion, 200, docs.data);
                 delete docs.data;
@@ -30,7 +25,7 @@ router.get("/", passport, function (request, response, next) {
                 response.send(200, result);
             })
             .catch(e => {
-                response.send(500, "gagal ambil data");
+                response.send(500, "Failed to fetch data.");
             })
     })
         .catch(e => {
