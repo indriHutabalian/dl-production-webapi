@@ -15,6 +15,8 @@ var v1ProductionOrderRouter = require('../src/routers/v1/finishing-printing/prod
 var v1MaterialByProcessTypeRouter = require('../src/routers/v1/finishing-printing/material-by-process-type-router');
 var v1ConstructionByMaterialProcessTypeRouter = require('../src/routers/v1/finishing-printing/construction-by-material-process-type-router');
 
+//MONITORING EVENT
+var v1MonitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
 
 module.exports = function(server) {
     v1WindingQualitySamplingRouter().applyRoutes(server,                        "/v1/spinning/winding/winding-quality-samplings");
@@ -28,4 +30,6 @@ module.exports = function(server) {
     v1ProductionOrderRouter().applyRoutes(server,                               "/v1/finishing-printing/production-orders");
     v1MaterialByProcessTypeRouter().applyRoutes(server,                         "/v1/finishing-printing/material-by-process-types");
     v1ConstructionByMaterialProcessTypeRouter().applyRoutes(server,             "/v1/finishing-printing/construction-by-material-process-types");
+
+    v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
 };
