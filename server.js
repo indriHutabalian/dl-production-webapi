@@ -49,11 +49,14 @@ v1DailySpinningProductionReportRouter.applyRoutes(server,   "/v1/spinning/windin
 var v1ProductionOrderRouter = require('./src/routers/v1/finishing-printing/production-order-router');
 v1ProductionOrderRouter.applyRoutes(server,   "/v1/finishing-printing/production-orders");
 
-var v1MaterialByProcessTypeRouter = require('./src/routers/v1/finishing-printing/material-by-process-type-router');
-v1MaterialByProcessTypeRouter.applyRoutes(server, "/v1/finishing-printing/material-by-process-types");
+var v1MaterialByOrderTypeRouter = require('./src/routers/v1/finishing-printing/material-by-order-type-router');
+v1MaterialByOrderTypeRouter.applyRoutes(server, "/v1/finishing-printing/material-by-order-types");
 
-var v1ConstructionByMaterialProcessTypeRouter = require('./src/routers/v1/finishing-printing/construction-by-material-process-type-router');
-v1ConstructionByMaterialProcessTypeRouter.applyRoutes(server, "/v1/finishing-printing/construction-by-material-process-types");
+var v1ConstructionByMaterialOrderTypeRouter = require('./src/routers/v1/finishing-printing/construction-by-material-order-type-router');
+v1ConstructionByMaterialOrderTypeRouter.applyRoutes(server, "/v1/finishing-printing/construction-by-material-order-types");
+
+var v1ColorTypeByMaterialOrderTypeConstructionRouter = require('./src/routers/v1/finishing-printing/color-type-by-material-order-type-construction-router');
+v1ColorTypeByMaterialOrderTypeConstructionRouter.applyRoutes(server, "/v1/finishing-printing/color-type-by-material-order-type-constructions");
 
 server.listen(process.env.PORT, process.env.IP);
 console.log(`server created at ${process.env.IP}:${process.env.PORT}`)
