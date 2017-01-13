@@ -12,8 +12,9 @@ var v1DailySpinningProductionReportRouter = require('../src/routers/v1/spinning/
 
 //PRODUCTION ORDER
 var v1ProductionOrderRouter = require('../src/routers/v1/finishing-printing/production-order-router');
-var v1MaterialByProcessTypeRouter = require('../src/routers/v1/finishing-printing/material-by-process-type-router');
-var v1ConstructionByMaterialProcessTypeRouter = require('../src/routers/v1/finishing-printing/construction-by-material-process-type-router');
+var v1MaterialByOrderTypeRouter = require('../src/routers/v1/finishing-printing/material-by-order-type-router');
+var v1ConstructionByMaterialOrderTypeRouter = require('../src/routers/v1/finishing-printing/construction-by-material-order-type-router');
+var v1ColorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/finishing-printing/color-type-by-material-order-type-construction-router');
 
 
 module.exports = function(server) {
@@ -26,6 +27,7 @@ module.exports = function(server) {
     v1DailySpinningProductionReportRouter().applyRoutes(server,                 "/v1/spinning/winding/reports/daily-production");
     
     v1ProductionOrderRouter().applyRoutes(server,                               "/v1/finishing-printing/production-orders");
-    v1MaterialByProcessTypeRouter().applyRoutes(server,                         "/v1/finishing-printing/material-by-process-types");
-    v1ConstructionByMaterialProcessTypeRouter().applyRoutes(server,             "/v1/finishing-printing/construction-by-material-process-types");
+    v1MaterialByOrderTypeRouter().applyRoutes(server,                           "/v1/finishing-printing/material-by-order-types");
+    v1ConstructionByMaterialOrderTypeRouter().applyRoutes(server,               "/v1/finishing-printing/construction-by-material-order-types");
+    v1ColorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/v1/finishing-printing/color-type-by-material-order-type-constructions");
 };

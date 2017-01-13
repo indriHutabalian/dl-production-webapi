@@ -10,18 +10,15 @@ function getRouter() {
     router.get("/", passport, function(request, response, next) {
         db.get().then(db => {
                 var manager = new InstructionManager(db, request.user);
-
                 var sorting = {
                     "_updatedDate": -1
                 };
                 var query = request.queryInfo;
-                var filter = {
-                    "processType": query.filter.processType,
-                    "material": query.filter.material
-                };
+                var orderId= query.filter.orderTypeId;
+                var materialId= query.filter.materialId;
                 query.order = sorting;
-                query.filter = filter;
-                manager.read(query)
+                var keyword= request.queryInfo.keyword;
+                manager.getConstruction(keyword,orderId,materialId)
                     .then(docs => {
                         var result = resultFormatter.ok(apiVersion, 200, docs.data);
                         delete docs.data;
