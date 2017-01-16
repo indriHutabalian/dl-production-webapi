@@ -44,5 +44,17 @@ v1LotMachineByProductMachineRouter.applyRoutes(server,   "/v1/spinning/winding/s
 var v1DailySpinningProductionReportRouter = require('./src/routers/v1/spinning/winding/reports/daily-spinning-production-report-router');
 v1DailySpinningProductionReportRouter.applyRoutes(server,   "/v1/spinning/winding/reports/daily-production");
 
+var v1DailyOperationRouter = require('./src/routers/v1/finishing-printing/daily-operation-router');
+v1DailyOperationRouter.applyRoutes(server,   "/v1/finishing-printing/daily-operations");
+
+var v1DataProductionOrderRouter = require('./src/routers/v1/finishing-printing/data-production-order-router');
+v1DataProductionOrderRouter.applyRoutes(server,   "/v1/finishing-printing/data-production-orders");
+
+var v1DataColorRouter = require('./src/routers/v1/finishing-printing/data-color-router');
+v1DataColorRouter.applyRoutes(server,   "/v1/finishing-printing/data-colors");
+
+var v1DailyOperationReportRouter = require('./src/routers/v1/finishing-printing/reports/daily-operation-report-router');
+v1DailyOperationReportRouter.applyRoutes(server,   "/v1/finishing-printing/reports/daily-operation-report");
+
 server.listen(process.env.PORT, process.env.IP);
 console.log(`server created at ${process.env.IP}:${process.env.PORT}`)
