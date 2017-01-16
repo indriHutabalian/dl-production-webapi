@@ -17,6 +17,9 @@ var constructionByMaterialProcessTypeRouter = require('../src/routers/v1/finishi
 
 //MONITORING EVENT
 var v1MonitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
+var materialByOrderTypeRouter = require('../src/routers/v1/finishing-printing/material-by-order-type-router');
+var constructionByMaterialOrderTypeRouter = require('../src/routers/v1/finishing-printing/construction-by-material-order-type-router');
+var colorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/finishing-printing/color-type-by-material-order-type-construction-router');
 
 module.exports = function(server) {
     windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
@@ -32,4 +35,7 @@ module.exports = function(server) {
     constructionByMaterialProcessTypeRouter().applyRoutes(server,             "/finishing-printing/construction-by-material-process-types");
 
     v1MonitoringEventRouter().applyRoutes(server,                             "/finishing-printing/monitoring-events");
+    materialByOrderTypeRouter().applyRoutes(server,                           "/finishing-printing/material-by-order-types");
+    constructionByMaterialOrderTypeRouter().applyRoutes(server,               "/finishing-printing/construction-by-material-order-types");
+    colorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/finishing-printing/color-type-by-material-order-type-constructions");
 };

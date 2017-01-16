@@ -10,11 +10,10 @@ function getRouter() {
     router.get("/", passport, function(request, response, next) {
         db.get().then(db => {
                 var manager = new InstructionManager(db, request.user);
-
                 var sorting = {
                     "_updatedDate": -1
                 };
-                var query = request.queryInfo.filter.processType;
+                var query = request.queryInfo.filter.orderTypeId;
                 var keyword = request.queryInfo.keyword;
                 manager.getMaterial(keyword, query)
                     .then(docs => {
