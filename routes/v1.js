@@ -29,11 +29,9 @@ module.exports = function(server) {
     v1DailySpinningProductionReportRouter().applyRoutes(server,                 "/v1/spinning/winding/reports/daily-production");
     
     v1ProductionOrderRouter().applyRoutes(server,                               "/v1/finishing-printing/production-orders");
-    v1MaterialByProcessTypeRouter().applyRoutes(server,                         "/v1/finishing-printing/material-by-process-types");
-    v1ConstructionByMaterialProcessTypeRouter().applyRoutes(server,             "/v1/finishing-printing/construction-by-material-process-types");
-
-    v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
     v1MaterialByOrderTypeRouter().applyRoutes(server,                           "/v1/finishing-printing/material-by-order-types");
     v1ConstructionByMaterialOrderTypeRouter().applyRoutes(server,               "/v1/finishing-printing/construction-by-material-order-types");
     v1ColorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/v1/finishing-printing/color-type-by-material-order-type-constructions");
+
+    v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
 };
