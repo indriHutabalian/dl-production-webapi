@@ -1,6 +1,6 @@
 var Router = require('restify-router').Router;
 var db = require("../../../db");
-var ProductionOrderManager = require("dl-module").managers.production.finishingPrinting.ProductionOrderManager;
+var ProductionOrderManager = require("dl-module").managers.sales.ProductionOrderManager;
 var resultFormatter = require("../../../result-formatter");
 var passport = require('../../../passports/jwt-passport');
 const apiVersion = '1.0.0';
