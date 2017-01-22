@@ -11,10 +11,10 @@ var v1DailySpinningProductionReportRouter = require('../src/routers/v1/spinning/
 
 
 //PRODUCTION ORDER
-var v1ProductionOrderRouter = require('../src/routers/v1/finishing-printing/production-order-router');
-var v1MaterialByOrderTypeRouter = require('../src/routers/v1/finishing-printing/material-by-order-type-router');
-var v1ConstructionByMaterialOrderTypeRouter = require('../src/routers/v1/finishing-printing/construction-by-material-order-type-router');
-var v1ColorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/finishing-printing/color-type-by-material-order-type-construction-router');
+var v1ProductionOrderRouter = require('../src/routers/v1/sales/production-order-router');
+var v1MaterialByOrderTypeRouter = require('../src/routers/v1/sales/material-by-order-type-router');
+var v1ConstructionByMaterialOrderTypeRouter = require('../src/routers/v1/sales/construction-by-material-order-type-router');
+var v1ColorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/sales/color-type-by-material-order-type-construction-router');
 
 //DAILY OPERATION
 var v1DailyOperationRouter = require('../src/routers/v1/finishing-printing/daily-operation-router');
@@ -33,13 +33,14 @@ module.exports = function(server) {
     v1LotMachineByProductMachineRouter().applyRoutes(server,                    "/v1/spinning/winding/search-lots");
     v1DailySpinningProductionReportRouter().applyRoutes(server,                 "/v1/spinning/winding/reports/daily-production");
     
-    v1ProductionOrderRouter().applyRoutes(server,                               "/v1/finishing-printing/production-orders");
-    v1MaterialByOrderTypeRouter().applyRoutes(server,                           "/v1/finishing-printing/material-by-order-types");
-    v1ConstructionByMaterialOrderTypeRouter().applyRoutes(server,               "/v1/finishing-printing/construction-by-material-order-types");
-    v1ColorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/v1/finishing-printing/color-type-by-material-order-type-constructions");
+    v1ProductionOrderRouter().applyRoutes(server,                               "/v1/sales/production-orders");
+    v1MaterialByOrderTypeRouter().applyRoutes(server,                           "/v1/sales/material-by-order-types");
+    v1ConstructionByMaterialOrderTypeRouter().applyRoutes(server,               "/v1/sales/construction-by-material-order-types");
+    v1ColorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/v1/sales/color-type-by-material-order-type-constructions");
 
     v1DailyOperationRouter().applyRoutes(server,                                "/v1/finishing-printing/daily-operations");
     v1DataProductionOrderRouter().applyRoutes(server,                           "/v1/finishing-printing/data-production-orders");
     v1DataColorRouter().applyRoutes(server,                                     "/v1/finishing-printing/data-colors");
     v1DailyOperationReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/daily-operation-report");
+
 };
