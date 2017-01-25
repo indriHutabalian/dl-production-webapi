@@ -23,6 +23,8 @@ var v1DataColorRouter = require('../src/routers/v1/finishing-printing/data-color
 var v1DailyOperationReportRouter = require('../src/routers/v1/finishing-printing/reports/daily-operation-report-router');
 
 
+//MONITORING EVENT
+var v1MonitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
 
 module.exports = function(server) {
     v1WindingQualitySamplingRouter().applyRoutes(server,                        "/v1/spinning/winding/winding-quality-samplings");
@@ -42,5 +44,5 @@ module.exports = function(server) {
     v1DataProductionOrderRouter().applyRoutes(server,                           "/v1/finishing-printing/data-production-orders");
     v1DataColorRouter().applyRoutes(server,                                     "/v1/finishing-printing/data-colors");
     v1DailyOperationReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/daily-operation-report");
-
+    v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
 };

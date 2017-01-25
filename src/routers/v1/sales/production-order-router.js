@@ -14,12 +14,8 @@ function getRouter() {
                 var sorting = {
                     "_updatedDate": -1
                 };
-                var filter = {
-                    _createdBy: request.user.username
-                };
 
                 var query = request.queryInfo;
-                query.filter = filter;
                 query.order = sorting;
                 query.select = [
                     "productionOrders", "_createdBy", "salesContractNo"
