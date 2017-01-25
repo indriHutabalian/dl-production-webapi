@@ -22,6 +22,9 @@ var DataProductionOrderRouter = require('../src/routers/v1/finishing-printing/da
 var DataColorRouter = require('../src/routers/v1/finishing-printing/data-color-router');
 var DailyOperationReportRouter = require('../src/routers/v1/finishing-printing/reports/daily-operation-report-router');
 
+//MONITORING EVENT
+var monitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
+
 module.exports = function(server) {
     windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
     windingMachingByUnitRouter().applyRoutes(server,                          "/spinning/winding/machine-by-units");
@@ -30,15 +33,14 @@ module.exports = function(server) {
     windingProductionOutputByUserRouter().applyRoutes(server,                 "/spinning/winding/production-outputs/by-user");
     lotMachineByProductMachineRouter().applyRoutes(server,                    "/spinning/winding/search-lots");
     dailySpinningProductionReportRouter().applyRoutes(server,                 "/spinning/winding/reports/daily-production");
-    
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
     materialByOrderTypeRouter().applyRoutes(server,                           "/sales/material-by-order-types");
     constructionByMaterialOrderTypeRouter().applyRoutes(server,               "/sales/construction-by-material-order-types");
     colorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/sales/color-type-by-material-order-type-constructions");
 
-    DailyOperationRouter().applyRoutes(server,                                  "/finishing-printing/daily-operations");
-    DataProductionOrderRouter().applyRoutes(server,                             "/finishing-printing/data-production-orders");
-    DataColorRouter().applyRoutes(server,                                       "/finishing-printing/data-colors");
-    DailyOperationReportRouter().applyRoutes(server,                            "/finishing-printing/reports/daily-operation-report");
-
+    DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
+    DataProductionOrderRouter().applyRoutes(server,                           "/finishing-printing/data-production-orders");
+    DataColorRouter().applyRoutes(server,                                     "/finishing-printing/data-colors");
+    DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
+    monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
 };
