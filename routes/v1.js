@@ -24,6 +24,7 @@ var v1DailyOperationReportRouter = require('../src/routers/v1/finishing-printing
 
 //MONITORING EVENT
 var v1MonitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
+var v1MonitoringEventReportRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-event-report-router');
 
 //MONITORING SPECIFICATION MACHINE
 var v1MonitoringSpecificationMachineRouter = require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
@@ -48,5 +49,6 @@ module.exports = function(server) {
     v1DataColorRouter().applyRoutes(server,                                     "/v1/finishing-printing/data-colors");
     v1DailyOperationReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/daily-operation-report");
     v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
+    v1MonitoringEventReportRouter().applyRoutes(server,                         "/v1/finishing-printing/reports/monitoring-events");
     v1MonitoringSpecificationMachineRouter().applyRoutes(server,                "/v1/finishing-printing/monitoring-specification-machine");
 };
