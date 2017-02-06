@@ -5,7 +5,3 @@ describe("BASIC SCENARIOS", function() {
 describe("UNAUTHORIZED SCENARIOS", function() {
     require("./unauthorized");
 });
-
-describe("REPORT SCENARIOS", function() {
-    require("./report");
-});
