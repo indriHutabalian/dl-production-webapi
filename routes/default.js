@@ -12,6 +12,7 @@ var dailySpinningProductionReportRouter = require('../src/routers/v1/spinning/wi
 
 //PRODUCTION ORDER
 var productionOrderRouter = require('../src/routers/v1/sales/production-order-router');
+var productionOrderReportRouter = require('../src/routers/v1/sales/reports/production-order-report-router');
 var materialByOrderTypeRouter = require('../src/routers/v1/sales/material-by-order-type-router');
 
 //DAILY OPERATION
@@ -22,6 +23,7 @@ var DailyOperationReportRouter = require('../src/routers/v1/finishing-printing/r
 
 //MONITORING EVENT
 var monitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
+var monitoringEventReportRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-event-report-router');
 
 //MONITORING SPECIFICATION MACHINE
 var monitoringSpecificationMachine= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
@@ -37,6 +39,7 @@ module.exports = function(server) {
     lotMachineByProductMachineRouter().applyRoutes(server,                    "/spinning/winding/search-lots");
     dailySpinningProductionReportRouter().applyRoutes(server,                 "/spinning/winding/reports/daily-production");
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
+    productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
     materialByOrderTypeRouter().applyRoutes(server,                           "/sales/material-by-order-types");
 
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
@@ -44,6 +47,6 @@ module.exports = function(server) {
     DataColorRouter().applyRoutes(server,                                     "/finishing-printing/data-colors");
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
+    monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
     monitoringSpecificationMachine().applyRoutes(server,                      "/finishing-printing/monitoring-specification-machine");
-
 };
