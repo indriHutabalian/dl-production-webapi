@@ -39,6 +39,9 @@ before("initialize server", function(done) {
 });
 
 
-describe('@dl-core-webapi', function() {
+describe('@dl-production-webapi', function() {
     this.timeout(2 * 60000); 
+    //Production
+    test("/v1/finishing-printing/monitoring-events", "./routes/production/finishing-printing/monitoring-event");
+    test("/v1/finishing-printing/monitoring-specification-machine", "./routes/production/finishing-printing/monitoring-specification-machine");
 });
