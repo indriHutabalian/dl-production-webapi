@@ -25,7 +25,7 @@ function getData() {
     product.properties = [];
 
     return product;
-}
+};
 
 it('#01. Should be able to get list', function(done) {
     request(uri)
@@ -42,7 +42,7 @@ it('#01. Should be able to get list', function(done) {
                 done();
             }
         });
-})
+});
 
 it('#02. should success when create new data', function(done) {
     var data = getData();

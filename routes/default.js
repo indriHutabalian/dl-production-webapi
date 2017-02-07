@@ -12,6 +12,7 @@ var dailySpinningProductionReportRouter = require('../src/routers/v1/spinning/wi
 
 //PRODUCTION ORDER
 var productionOrderRouter = require('../src/routers/v1/sales/production-order-router');
+var productionOrderReportRouter = require('../src/routers/v1/sales/reports/production-order-report-router');
 var materialByOrderTypeRouter = require('../src/routers/v1/sales/material-by-order-type-router');
 var constructionByMaterialOrderTypeRouter = require('../src/routers/v1/sales/construction-by-material-order-type-router');
 var colorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/sales/color-type-by-material-order-type-construction-router');
@@ -32,6 +33,7 @@ module.exports = function(server) {
     dailySpinningProductionReportRouter().applyRoutes(server,                 "/spinning/winding/reports/daily-production");
     
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
+    productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
     materialByOrderTypeRouter().applyRoutes(server,                           "/sales/material-by-order-types");
     constructionByMaterialOrderTypeRouter().applyRoutes(server,               "/sales/construction-by-material-order-types");
     colorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/sales/color-type-by-material-order-type-constructions");
