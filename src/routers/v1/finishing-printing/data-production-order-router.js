@@ -19,7 +19,7 @@ function getRouter() {
                 })
                 .catch(e => {
                     response.send(500, "gagal ambil data");
-                })
+                });
         })
         .catch(e => {
             var error = resultFormatter.fail(apiVersion, 400, e);

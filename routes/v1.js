@@ -12,9 +12,8 @@ var v1DailySpinningProductionReportRouter = require('../src/routers/v1/spinning/
 
 //PRODUCTION ORDER
 var v1ProductionOrderRouter = require('../src/routers/v1/sales/production-order-router');
-var v1MaterialByOrderTypeRouter = require('../src/routers/v1/sales/material-by-order-type-router');
-var v1ConstructionByMaterialOrderTypeRouter = require('../src/routers/v1/sales/construction-by-material-order-type-router');
-var v1ColorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/sales/color-type-by-material-order-type-construction-router');
+var v1ProductionOrderReportRouter = require('../src/routers/v1/sales/reports/production-order-report-router');
+var v1MaterialRouter = require('../src/routers/v1/sales/material-router');
 
 //DAILY OPERATION
 var v1DailyOperationRouter = require('../src/routers/v1/finishing-printing/daily-operation-router');
@@ -40,9 +39,8 @@ module.exports = function(server) {
     v1DailySpinningProductionReportRouter().applyRoutes(server,                 "/v1/spinning/winding/reports/daily-production");
     
     v1ProductionOrderRouter().applyRoutes(server,                               "/v1/sales/production-orders");
-    v1MaterialByOrderTypeRouter().applyRoutes(server,                           "/v1/sales/material-by-order-types");
-    v1ConstructionByMaterialOrderTypeRouter().applyRoutes(server,               "/v1/sales/construction-by-material-order-types");
-    v1ColorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/v1/sales/color-type-by-material-order-type-constructions");
+    v1ProductionOrderReportRouter().applyRoutes(server,                         "/v1/sales/reports/production-order-report");
+    v1MaterialRouter().applyRoutes(server,                                      "/v1/sales/materials");
 
     v1DailyOperationRouter().applyRoutes(server,                                "/v1/finishing-printing/daily-operations");
     v1DataProductionOrderRouter().applyRoutes(server,                           "/v1/finishing-printing/data-production-orders");
