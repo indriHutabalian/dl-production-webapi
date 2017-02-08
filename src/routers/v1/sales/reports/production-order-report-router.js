@@ -31,6 +31,10 @@ function getRouter() {
                             for(var order of docs){
                                 index++;
                                 var item = {};
+                                var firstname = "";
+                                var lastname = "";
+                                if(order.firstname) firstname = order.firstname;
+                                if(order.lastname) lastname = order.lastname;
                                 item["No"] = index;
                                 item["Nomor Sales Contract"] = order.salesContractNo;
                                 item["Tanggal Surat Order Produksi"] = moment(new Date(order.createdDate)).format(dateFormat);
@@ -47,7 +51,7 @@ function getRouter() {
                                 item["Jumlah"] = order.quantity;
                                 item["Satuan Detail"] = order.uomDetail;
                                 item["Tanggal Delivery"] = moment(new Date(order.deliveryDate)).format(dateFormat);
-                                item["Staff Penjualan"] = `${order.firstname} ${order.lastname}`;
+                                item["Staff Penjualan"] = `${firstname} ${lastname}`;
                                 item["Status"] = "";
                                 data.push(item);
                             }
