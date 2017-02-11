@@ -2,10 +2,10 @@
   "name": "dl-core-webapi",
   "version": "1.0.0",
   "description": "Dan Liris production RESTful api",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test/index.js",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "6.3.0",
@@ -23,7 +23,7 @@
 "homepage": "https://github.com/danliris/dl-production-webapi#readme",
   "dependencies": {
     "assert": "^1.4.1",
-    "dl-module": "git+https://github.com/danliris/dl-module.git#dev",
+    "dl-module": "git+https://github.com/danliris/dl-module.git#uat",
     "json2xls": "^0.1.2",
     "mongo-factory": "^1.0.0",
     "mongodb": "^2.2.5",

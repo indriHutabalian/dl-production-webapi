@@ -17,7 +17,7 @@ function getData() {
     buyer.contact = `phone[${code}]`;
     buyer.tempo = 0;
     return buyer;
-}
+};
 
 it('#01. Should be able to get list', function (done) {
     request(uri)
@@ -34,7 +34,7 @@ it('#01. Should be able to get list', function (done) {
                 done();
             }
         });
-})
+});
 
 it('#02. should success when create new data', function (done) {
     var data = getData();
