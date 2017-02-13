@@ -26,7 +26,8 @@ var monitoringEventRouter = require('../src/routers/v1/finishing-printing/monito
 var monitoringEventReportRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-event-report-router');
 
 //MONITORING SPECIFICATION MACHINE
-var monitoringSpecificationMachine= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var monitoringSpecificationMachineRouter= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-report-router');
 
 
 
@@ -40,7 +41,7 @@ module.exports = function(server) {
     dailySpinningProductionReportRouter().applyRoutes(server,                 "/spinning/winding/reports/daily-production");
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
     productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
-    materialRouter().applyRoutes(server,                           "/sales/materials");
+    materialRouter().applyRoutes(server,                                      "/sales/materials");
 
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
     DataProductionOrderRouter().applyRoutes(server,                           "/finishing-printing/data-production-orders");
@@ -48,5 +49,6 @@ module.exports = function(server) {
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
-    monitoringSpecificationMachine().applyRoutes(server,                      "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
 };
