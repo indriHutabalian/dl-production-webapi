@@ -18,7 +18,7 @@ function getRouter() {
                 var query = request.queryInfo;
                 query.order = sorting;
                 query.select = [
-                    "productionOrders", "_createdBy", "salesContractNo"
+                    "orderNo","buyer.name","buyer.type","processType.name", "deliveryDate", "_createdBy", "salesContractNo"
                 ];
                 manager.read(query)
                     .then(docs => {
@@ -43,22 +43,15 @@ function getRouter() {
                 var manager = new ProductionOrderManager(db, request.user);
 
                 var id = request.params.id;
-                var no = request.params.no;
                 var dateFormat = "DD MMMM YYYY";
                 var locale = 'id-ID';
                 var moment = require('moment');
                 moment.locale(locale);
-                manager.pdf(id, no)
+                manager.pdf(id)
                     .then(docBinary => {
                         manager.getSingleById(id)
-                            .then(docs => {
-                                var doc = {};
-                                for (var i of docs.productionOrders) {
-                                    if (i.orderNo == no) {
-                                        doc = i;
-                                        break;
-                                    }
-                                }
+                            .then(doc => {
+                                
                                 response.writeHead(200, {
                                     'Content-Type': 'application/pdf',
                                     'Content-Disposition': `attachment; filename=${doc.orderNo}.pdf`,
@@ -171,16 +164,9 @@ function getRouter() {
             var manager = new ProductionOrderManager(db, request.user);
 
             var id = request.params.id;
-            var no = request.params.no;
-            var data = "";
             manager.getSingleById(id).then(doc => {
-                for (var i of doc.productionOrders) {
-                    if (i.orderNo == no) {
-                        data = i;
-                        break;
-                    }
-                }
-                manager.delete(data)
+                
+                manager.delete(doc)
                     .then(docId => {
                         var result = resultFormatter.ok(apiVersion, 204);
                         response.send(204, result);
