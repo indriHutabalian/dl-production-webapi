@@ -12,9 +12,8 @@ var dailySpinningProductionReportRouter = require('../src/routers/v1/spinning/wi
 
 //PRODUCTION ORDER
 var productionOrderRouter = require('../src/routers/v1/sales/production-order-router');
-var materialByOrderTypeRouter = require('../src/routers/v1/sales/material-by-order-type-router');
-var constructionByMaterialOrderTypeRouter = require('../src/routers/v1/sales/construction-by-material-order-type-router');
-var colorTypeByMaterialOrderTypeConstructionRouter = require('../src/routers/v1/sales/color-type-by-material-order-type-construction-router');
+var productionOrderReportRouter = require('../src/routers/v1/sales/reports/production-order-report-router');
+var materialRouter = require('../src/routers/v1/sales/material-router');
 
 //DAILY OPERATION
 var DailyOperationRouter = require('../src/routers/v1/finishing-printing/daily-operation-router');
@@ -27,7 +26,8 @@ var monitoringEventRouter = require('../src/routers/v1/finishing-printing/monito
 var monitoringEventReportRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-event-report-router');
 
 //MONITORING SPECIFICATION MACHINE
-var monitoringSpecificationMachine= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var monitoringSpecificationMachineRouter= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-report-router');
 
 
 
@@ -40,9 +40,8 @@ module.exports = function(server) {
     lotMachineByProductMachineRouter().applyRoutes(server,                    "/spinning/winding/search-lots");
     dailySpinningProductionReportRouter().applyRoutes(server,                 "/spinning/winding/reports/daily-production");
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
-    materialByOrderTypeRouter().applyRoutes(server,                           "/sales/material-by-order-types");
-    constructionByMaterialOrderTypeRouter().applyRoutes(server,               "/sales/construction-by-material-order-types");
-    colorTypeByMaterialOrderTypeConstructionRouter().applyRoutes(server,      "/sales/color-type-by-material-order-type-constructions");
+    productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
+    materialRouter().applyRoutes(server,                                      "/sales/materials");
 
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
     DataProductionOrderRouter().applyRoutes(server,                           "/finishing-printing/data-production-orders");
@@ -50,5 +49,6 @@ module.exports = function(server) {
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
-    monitoringSpecificationMachine().applyRoutes(server,                      "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
 };
