@@ -17,9 +17,6 @@ function getRouter() {
 
                 var query = request.queryInfo;
                 query.order = sorting;
-                query.select = [
-                    "orderNo","buyer.name","buyer.type","processType.name", "deliveryDate", "_createdBy", "salesContractNo"
-                ];
                 manager.read(query)
                     .then(docs => {
                         var result = resultFormatter.ok(apiVersion, 200, docs.data);
