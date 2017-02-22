@@ -44,4 +44,5 @@ describe('@dl-production-webapi', function() {
     //Production
     test("/v1/finishing-printing/monitoring-events", "./routes/production/finishing-printing/monitoring-event");
     test("/v1/finishing-printing/monitoring-specification-machine", "./routes/production/finishing-printing/monitoring-specification-machine");
+    test("/v1/finishing-printing/kanbans", "./routes/production/finishing-printing/kanban");
 });
