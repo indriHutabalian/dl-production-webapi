@@ -20,7 +20,7 @@ function getRouter() {
                         moment.locale(locale);
                         if ((request.headers.accept || '').toString().indexOf("application/xls") < 0){
                             for(var a in docs){
-                                docs[a].createdDate = moment(new Date(docs[a].createdDate)).format(dateFormat);
+                                docs[a]._createdDate = moment(new Date(docs[a]._createdDate)).format(dateFormat);
                                 docs[a].deliveryDate = moment(new Date(docs[a].deliveryDate)).format(dateFormat);
                             }
                             var result = resultFormatter.ok(apiVersion, 200, docs);
@@ -37,7 +37,7 @@ function getRouter() {
                                 if(order.lastname) lastname = order.lastname;
                                 item["No"] = index;
                                 item["Nomor Sales Contract"] = order.salesContractNo;
-                                item["Tanggal Surat Order Produksi"] = moment(new Date(order.createdDate)).format(dateFormat);
+                                item["Tanggal Surat Order Produksi"] = moment(new Date(order._createdDate)).format(dateFormat);
                                 item["Nomor Surat Order Produksi"] = order.orderNo;
                                 item["Jenis Order"] = order.orderType;
                                 item["Jenis Proses"] = order.processType;
