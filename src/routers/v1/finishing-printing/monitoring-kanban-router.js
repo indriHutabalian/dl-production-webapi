@@ -45,6 +45,7 @@ function getRouter() {
                                 item["Grade"] = kanban.grade;
                                 item["Nomor Kereta"] = kanban.cartNumber;
                                 item["Panjang"] = kanban.length;
+                                item["PCS"] = kanban.pcs;
                                 item["Satuan"] = kanban.uom;
                                 data.push(item);
                             }
