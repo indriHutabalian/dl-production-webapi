@@ -29,7 +29,9 @@ var monitoringEventReportRouter = require('../src/routers/v1/finishing-printing/
 var monitoringSpecificationMachineRouter= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
 var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-report-router');
 
-
+// KANBAN
+var kanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router');
+var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
 
 module.exports = function(server) {
     windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
@@ -51,4 +53,6 @@ module.exports = function(server) {
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
     monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
     monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
+    monitoringKanbanRouter().applyRoutes(server,                              "/finishing-printing/monitoring-kanbans");
+    kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
 };
