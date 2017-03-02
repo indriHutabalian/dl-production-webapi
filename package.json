@@ -2,10 +2,10 @@
   "name": "dl-core-webapi",
   "version": "1.0.0",
   "description": "Dan Liris production RESTful api",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test/index.js",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "6.3.0",
