@@ -31,6 +31,12 @@ var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finis
 var kanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router');
 var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
 
+//SALES CONTRACT
+var finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
+var spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
+var weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-contract-router');
+
+
 module.exports = function(server) {
     windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
     windingMachingByUnitRouter().applyRoutes(server,                          "/spinning/winding/machine-by-units");
@@ -42,6 +48,9 @@ module.exports = function(server) {
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
     productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
     materialRouter().applyRoutes(server,                                      "/sales/materials");
+    finishingPrintingSalesContractRouter().applyRoutes(server,                "/sales/finishing-printing-sales-contracts");
+    spinningSalesContractRouter().applyRoutes(server,                         "/sales/spinning-sales-contracts");
+    weavingSalesContractRouter().applyRoutes(server,                          "/sales/weaving-sales-contracts");
 
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
