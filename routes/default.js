@@ -17,8 +17,6 @@ var materialRouter = require('../src/routers/v1/sales/material-router');
 
 //DAILY OPERATION
 var DailyOperationRouter = require('../src/routers/v1/finishing-printing/daily-operation-router');
-var DataProductionOrderRouter = require('../src/routers/v1/finishing-printing/data-production-order-router');
-var DataColorRouter = require('../src/routers/v1/finishing-printing/data-color-router');
 var DailyOperationReportRouter = require('../src/routers/v1/finishing-printing/reports/daily-operation-report-router');
 
 //MONITORING EVENT
@@ -46,8 +44,6 @@ module.exports = function(server) {
     materialRouter().applyRoutes(server,                                      "/sales/materials");
 
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
-    DataProductionOrderRouter().applyRoutes(server,                           "/finishing-printing/data-production-orders");
-    DataColorRouter().applyRoutes(server,                                     "/finishing-printing/data-colors");
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
