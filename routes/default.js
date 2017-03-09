@@ -17,8 +17,6 @@ var materialRouter = require('../src/routers/v1/sales/material-router');
 
 //DAILY OPERATION
 var DailyOperationRouter = require('../src/routers/v1/finishing-printing/daily-operation-router');
-var DataProductionOrderRouter = require('../src/routers/v1/finishing-printing/data-production-order-router');
-var DataColorRouter = require('../src/routers/v1/finishing-printing/data-color-router');
 var DailyOperationReportRouter = require('../src/routers/v1/finishing-printing/reports/daily-operation-report-router');
 
 //MONITORING EVENT
@@ -31,6 +29,13 @@ var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finis
 
 // KANBAN
 var kanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router');
+var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
+
+//SALES CONTRACT
+var finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
+var spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
+var weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-contract-router');
+
 
 module.exports = function(server) {
     windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
@@ -43,14 +48,16 @@ module.exports = function(server) {
     productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
     productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
     materialRouter().applyRoutes(server,                                      "/sales/materials");
+    finishingPrintingSalesContractRouter().applyRoutes(server,                "/sales/finishing-printing-sales-contracts");
+    spinningSalesContractRouter().applyRoutes(server,                         "/sales/spinning-sales-contracts");
+    weavingSalesContractRouter().applyRoutes(server,                          "/sales/weaving-sales-contracts");
 
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
-    DataProductionOrderRouter().applyRoutes(server,                           "/finishing-printing/data-production-orders");
-    DataColorRouter().applyRoutes(server,                                     "/finishing-printing/data-colors");
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
     monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
     monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
+    monitoringKanbanRouter().applyRoutes(server,                              "/finishing-printing/monitoring-kanbans");
     kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
 };
