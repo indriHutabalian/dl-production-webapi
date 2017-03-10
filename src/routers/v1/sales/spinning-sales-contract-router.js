@@ -1,4 +1,4 @@
-var Manager = require("dl-module").managers.production.finishingPrinting.DailyOperationManager;
+var Manager = require("dl-module").managers.sales.SpinningSalesContractManager;
 var JwtRouterFactory = require("../../jwt-router-factory");
 const apiVersion = '1.0.0';
 
