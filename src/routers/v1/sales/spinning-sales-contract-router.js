@@ -6,7 +6,7 @@ var db = require("../../../db");
 
 var JwtRouterFactory = require("../../jwt-router-factory");
 
-var handlePdfRequest = function(request, response, next) {
+var handlePdfRequest = function (request, response, next) {
     db.get()
         .then(db => {
             var manager = new Manager(db, request.user);
@@ -44,11 +44,11 @@ function getRouter() {
         defaultOrder: {
             "_updatedDate": -1
         },
-        defaultSelect:["salesContractNo","buyer.name","buyer.type"]
+        defaultSelect: ["salesContractNo", "buyer.name", "buyer.type", "deliverySchedule"]
     });
 
     var route = router.routes["get"].find(route => route.options.path === "/:id");
-    route.handlers[route.handlers.length - 1] = function(request, response, next) {
+    route.handlers[route.handlers.length - 1] = function (request, response, next) {
         if ((request.headers.accept || '').toString().indexOf("application/pdf") >= 0) {
             next();
         }
