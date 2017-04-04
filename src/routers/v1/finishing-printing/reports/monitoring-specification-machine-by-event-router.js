@@ -30,7 +30,7 @@ function getRouter() {
         getManager(user)
             .then((manager) => {
                 monitoringSpecificationMachineManager = manager;
-                return monitoringSpecificationMachineManager.getMonitoringSpecificationMachineByDate(query);
+                return monitoringSpecificationMachineManager.getMonitoringSpecificationMachineByEvent(query);
             })
             .then(docs => {
                 var result = resultFormatter.ok(apiVersion, 200, docs.data);
