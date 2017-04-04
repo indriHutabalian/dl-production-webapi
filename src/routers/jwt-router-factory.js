@@ -30,7 +30,7 @@ function getJWTRouter(ManagerType, opts) {
         query.filter = Object.assign({}, query.filter, typeof defaultFilter === "function" ? defaultFilter(request, response, next) : defaultFilter, query.filter);
         query.order = Object.assign({}, query.order, typeof defaultOrder === "function" ? defaultOrder(request, response, next) : defaultOrder, query.order);
         query.select = query.select ? query.select : typeof defaultSelect === "function" ? defaultSelect(request, response, next) : defaultSelect;
-        
+
         getManager(user)
             .then((manager) => {
                 return manager.read(query);
@@ -57,10 +57,12 @@ function getJWTRouter(ManagerType, opts) {
     router.get("/:id", passport, (request, response, next) => {
         var user = request.user;
         var id = request.params.id;
+        var query = request.query;
+        query.select = query.select ? query.select : typeof defaultSelect === "function" ? defaultSelect(request, response, next) : defaultSelect;
 
         getManager(user)
             .then((manager) => {
-                return manager.getSingleByIdOrDefault(id);
+                return manager.getSingleByIdOrDefault(id, query.select);
             })
             .then((doc) => {
                 var result;
