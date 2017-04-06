@@ -25,6 +25,7 @@ var v1MonitoringEventReportRouter = require('../src/routers/v1/finishing-printin
 
 //MONITORING SPECIFICATION MACHINE
 var v1MonitoringSpecificationMachineRouter = require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var v1MonitoringSpecificationMachineReportByEventRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-by-event-router');
 var v1MonitoringSpecificationMachineReportRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-report-router');
 
 // KANBAN
@@ -57,6 +58,7 @@ module.exports = function(server) {
     v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
     v1MonitoringEventReportRouter().applyRoutes(server,                         "/v1/finishing-printing/reports/monitoring-events");
     v1MonitoringSpecificationMachineRouter().applyRoutes(server,                "/v1/finishing-printing/monitoring-specification-machine");
+    v1MonitoringSpecificationMachineReportByEventRouter().applyRoutes(server,    "/v1/finishing-printing/reports/monitoring-specification-machine/by-event");
     v1MonitoringSpecificationMachineReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/monitoring-specification-machine");
     v1MonitoringKanbanRouter().applyRoutes(server,                              "v1/finishing-printing/monitoring-kanbans");
     v1KanbanRouter().applyRoutes(server,                                        "/v1/finishing-printing/kanbans");
