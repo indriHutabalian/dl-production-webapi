@@ -66,10 +66,10 @@ module.exports = function(server) {
     v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
     v1MonitoringEventReportRouter().applyRoutes(server,                         "/v1/finishing-printing/reports/monitoring-events");
     v1MonitoringSpecificationMachineRouter().applyRoutes(server,                "/v1/finishing-printing/monitoring-specification-machine");
-    v1MonitoringSpecificationMachineReportByEventRouter().applyRoutes(server,    "/v1/finishing-printing/reports/monitoring-specification-machine/by-event");
+    v1MonitoringSpecificationMachineReportByEventRouter().applyRoutes(server,   "/v1/finishing-printing/reports/monitoring-specification-machine/by-event");
     v1MonitoringSpecificationMachineReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/monitoring-specification-machine");
-    v1MonitoringKanbanRouter().applyRoutes(server,                              "v1/finishing-printing/monitoring-kanbans");
+    v1MonitoringKanbanRouter().applyRoutes(server,                              "/v1/finishing-printing/monitoring-kanbans");
     v1KanbanRouter().applyRoutes(server,                                        "/v1/finishing-printing/kanbans");
-    fabricQualityControlRouter().applyRoutes(server,                            "/finishing-printing/quality-control/fabrics");
+    fabricQualityControlRouter().applyRoutes(server,                            "/v1/finishing-printing/quality-control/fabrics");
     v1finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };
