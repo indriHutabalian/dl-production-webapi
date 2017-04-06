@@ -32,6 +32,9 @@ var v1MonitoringSpecificationMachineReportRouter = require('../src/routers/v1/fi
 var v1KanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router');
 var v1MonitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
 
+// QUALITY-CONTROL/FABRIC
+var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
+
 //SALES CONTRACT
 var v1finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
 var v1spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
@@ -64,5 +67,6 @@ module.exports = function(server) {
     v1MonitoringSpecificationMachineReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/monitoring-specification-machine");
     v1MonitoringKanbanRouter().applyRoutes(server,                              "v1/finishing-printing/monitoring-kanbans");
     v1KanbanRouter().applyRoutes(server,                                        "/v1/finishing-printing/kanbans");
+    fabricQualityControlRouter().applyRoutes(server,                            "/finishing-printing/quality-control/fabrics");
     v1finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };

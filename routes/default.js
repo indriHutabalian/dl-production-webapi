@@ -32,6 +32,9 @@ var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finis
 var kanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router');
 var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
 
+// QUALITY-CONTROL/FABRIC
+var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
+
 //SALES CONTRACT
 var finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
 var spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
@@ -59,9 +62,11 @@ module.exports = function(server) {
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
     monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
-    monitoringSpecificationMachineReportByEventRouter().applyRoutes(server,    "/finishing-printing/reports/monitoring-specification-machine/by-event");
+    monitoringSpecificationMachineReportByEventRouter().applyRoutes(server,   "/finishing-printing/reports/monitoring-specification-machine/by-event");
     monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
     monitoringKanbanRouter().applyRoutes(server,                              "/finishing-printing/monitoring-kanbans");
     kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
+    
+    fabricQualityControlRouter().applyRoutes(server,                          "/finishing-printing/quality-control/fabrics");
     finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };
