@@ -25,6 +25,7 @@ var monitoringEventReportRouter = require('../src/routers/v1/finishing-printing/
 
 //MONITORING SPECIFICATION MACHINE
 var monitoringSpecificationMachineRouter= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var monitoringSpecificationMachineReportByEventRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-by-event-router');
 var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-report-router');
 
 // KANBAN
@@ -35,7 +36,11 @@ var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monito
 var finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
 var spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
 var weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-contract-router');
+
 var weavingSalesContractReportRouter = require('../src/routers/v1/sales/reports/weaving-sales-contract-report-router');
+
+var finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sales/reports/finishing-printing-sales-contract-report-router');
+
 
 
 module.exports = function(server) {
@@ -58,7 +63,9 @@ module.exports = function(server) {
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
     monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineReportByEventRouter().applyRoutes(server,    "/finishing-printing/reports/monitoring-specification-machine/by-event");
     monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
     monitoringKanbanRouter().applyRoutes(server,                              "/finishing-printing/monitoring-kanbans");
     kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
+    finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };
