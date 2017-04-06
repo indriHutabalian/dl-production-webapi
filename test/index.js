@@ -42,8 +42,9 @@ before("initialize server", function(done) {
 describe('@dl-production-webapi', function() {
     this.timeout(2 * 60000); 
     //Production
-    // test("/v1/finishing-printing/monitoring-events", "./routes/production/finishing-printing/monitoring-event");
-    // test("/v1/finishing-printing/monitoring-specification-machine", "./routes/production/finishing-printing/monitoring-specification-machine");
-    // test("/v1/finishing-printing/kanbans", "./routes/production/finishing-printing/kanban");
+    test("/v1/finishing-printing/monitoring-events", "./routes/production/finishing-printing/monitoring-event");
+    test("/v1/finishing-printing/monitoring-specification-machine", "./routes/production/finishing-printing/monitoring-specification-machine");
+    test("/v1/finishing-printing/kanbans", "./routes/production/finishing-printing/kanban");
     test("/v1/finishing-printing/daily-operations", "./routes/production/finishing-printing/daily-operation");
+    test("/v1/finishing-printing/quality-control/fabrics", "./routes/production/finishing-printing/fabric-quality-control");
 });
