@@ -1,35 +1,35 @@
-var Manager = require("dl-module").managers.production.finishingPrinting.KanbanManager;
+var Manager = require("dl-module").managers.production.finishingPrinting.FabricQualityControlManager;
 var JwtRouterFactory = require("../../jwt-router-factory");
 var resultFormatter = require("../../../result-formatter");
 var db = require("../../../db");
 const apiVersion = '1.0.0';
 
-var handlePdfRequest = function(request, response, next) {
+var handlePdfRequest = function (request, response, next) {
     var user = request.user;
     var id = request.params.id;
     var manager;
     db.get()
-        .then(db => {
+        .then((db) => {
             manager = new Manager(db, user);
             return manager.getSingleByIdOrDefault(id);
         })
-        .then((kanban) => {
-            var filename = kanban.productionOrder.orderNo + " - " + kanban.cart.cartNumber;
-            manager.pdf(kanban)
-                .then(kanbanDocBinary => {
+        .then((qualityControl) => {
+            var filename = qualityControl.code;
+            manager.pdf(qualityControl)
+                .then((qualityControlDocBinary) => {
                     response.writeHead(200, {
-                        'Content-Type': 'application/pdf',
-                        'Content-Disposition': `attachment; filename=${filename}.pdf`,
-                        'Content-Length': kanbanDocBinary.length
+                        "Content-Type": "application/pdf",
+                        "Content-Disposition": `attachment; filename = ${filename}.pdf`,
+                        "Content-Length": qualityControlDocBinary.length
                     });
-                    response.end(kanbanDocBinary);
+                    response.end(qualityControlDocBinary);
                 })
-                .catch(e => {
+                .catch((e) => {
                     var error = resultFormatter.fail(apiVersion, 400, e);
                     response.send(400, error);
-                });
-        });
-};
+                })
+        })
+}
 
 function getRouter() {
     var router = JwtRouterFactory(Manager, {
@@ -39,12 +39,12 @@ function getRouter() {
         }
     });
 
-    var route = router.routes["get"].find(route => route.options.path === "/:id");
+    var route = router.routes["get"].find((route) => route.options.path === "/:id");
     var originalHandler = route.handlers[route.handlers.length - 1];
-    route.handlers[route.handlers.length - 1] = function(request, response, next) {
-        var isPDFRequest = (request.headers.accept || '').toString().indexOf("application/pdf") >= 0;
+    route.handlers[route.handlers.length - 1] = function (request, response, next) {
+        var isPDFRequest = (request.headers.accept || "").toString().indexOf("application/pdf") >= 0;
         if (isPDFRequest) {
-            next();
+            next()
         }
         else {
             originalHandler(request, response, next);

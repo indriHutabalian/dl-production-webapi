@@ -25,16 +25,26 @@ var monitoringEventReportRouter = require('../src/routers/v1/finishing-printing/
 
 //MONITORING SPECIFICATION MACHINE
 var monitoringSpecificationMachineRouter= require('../src/routers/v1/finishing-printing/monitoring-specification-machine-router');
+var monitoringSpecificationMachineReportByEventRouter = require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-by-event-router');
 var monitoringSpecificationMachineReportRouter= require('../src/routers/v1/finishing-printing/reports/monitoring-specification-machine-report-router');
 
 // KANBAN
 var kanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router');
 var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
 
+// QUALITY-CONTROL/FABRIC
+var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
+
 //SALES CONTRACT
 var finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
 var spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
 var weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-contract-router');
+
+var weavingSalesContractReportRouter = require('../src/routers/v1/sales/reports/weaving-sales-contract-report-router');
+
+var finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sales/reports/finishing-printing-sales-contract-report-router');
+var spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
+
 
 
 module.exports = function(server) {
@@ -50,14 +60,19 @@ module.exports = function(server) {
     materialRouter().applyRoutes(server,                                      "/sales/materials");
     finishingPrintingSalesContractRouter().applyRoutes(server,                "/sales/finishing-printing-sales-contracts");
     spinningSalesContractRouter().applyRoutes(server,                         "/sales/spinning-sales-contracts");
+    spinningSalesContractReportRouter().applyRoutes(server,                   "/sales/reports/spinning-sales-contract-reports");
     weavingSalesContractRouter().applyRoutes(server,                          "/sales/weaving-sales-contracts");
-
+    weavingSalesContractReportRouter().applyRoutes(server,                    "/sales/reports/weaving-sales-contract-report");
     DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
     DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
     monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
     monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
     monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineReportByEventRouter().applyRoutes(server,   "/finishing-printing/reports/monitoring-specification-machine/by-event");
     monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
     monitoringKanbanRouter().applyRoutes(server,                              "/finishing-printing/monitoring-kanbans");
     kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
+    
+    fabricQualityControlRouter().applyRoutes(server,                          "/finishing-printing/quality-control/fabrics");
+    finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };
