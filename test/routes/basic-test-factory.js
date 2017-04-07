@@ -28,7 +28,7 @@ function getBasicTest(opt) {
             });
     });
 
-    it(`#01. get list of accounts - [GET]${uri}`, function(done) {
+    it(`#01. get list of data - [GET]${uri}`, function(done) {
         request
             .get(uri)
             .set("authorization", `JWT ${jwt}`)
