@@ -34,6 +34,7 @@ var monitoringKanbanRouter= require('../src/routers/v1/finishing-printing/monito
 
 // QUALITY-CONTROL/FABRIC
 var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
+var packingRouter= require('../src/routers/v1/finishing-printing/packing-router');
 
 //SALES CONTRACT
 var finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
@@ -72,5 +73,6 @@ module.exports = function(server) {
     kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
     
     fabricQualityControlRouter().applyRoutes(server,                          "/finishing-printing/quality-control/fabrics");
+    packingRouter().applyRoutes(server,                                       "/finishing-printing/quality-control/packings");
     finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };
