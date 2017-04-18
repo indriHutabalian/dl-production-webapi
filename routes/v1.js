@@ -34,9 +34,9 @@ var v1MonitoringKanbanRouter= require('../src/routers/v1/finishing-printing/moni
 
 // QUALITY-CONTROL/FABRIC
 var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
-var v1FabricQualityControlReportRouter = require('../src/routers/v1/finishing-printing/reports/fabric-quality-control-report-router');
+var packingRouter= require('../src/routers/v1/finishing-printing/packing-router');
 
-//SALES CONTRACT 
+//SALES CONTRACT
 var v1finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
 var v1spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
 var v1weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-contract-router');
@@ -63,7 +63,7 @@ module.exports = function(server) {
     v1spinningSalesContractRouter().applyRoutes(server,                         "/v1/sales/spinning-sales-contracts");
     v1spinningSalesContractReportRouter().applyRoutes(server,                   "/v1/sales/reports/spinning-sales-contract-reports");
     v1weavingSalesContractRouter().applyRoutes(server,                          "/v1/sales/weaving-sales-contracts");
-    v1weavingSalesContractReportRouter().applyRoutes(server,                    "/v1/sales/reports/weaving-sales-contract-report")
+    v1weavingSalesContractReportRouter().applyRoutes(server,                    "/v1/sales/reports/weaving-sales-contract-report");
     v1DailyOperationRouter().applyRoutes(server,                                "/v1/finishing-printing/daily-operations");
     v1DailyOperationReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/daily-operation-report");
     v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
@@ -74,6 +74,6 @@ module.exports = function(server) {
     v1MonitoringKanbanRouter().applyRoutes(server,                              "/v1/finishing-printing/monitoring-kanbans");
     v1KanbanRouter().applyRoutes(server,                                        "/v1/finishing-printing/kanbans");
     fabricQualityControlRouter().applyRoutes(server,                            "/v1/finishing-printing/quality-control/fabrics");
-    v1FabricQualityControlReportRouter().applyRoutes(server,                    "/v1/finishing-printing/reports/fabric-quality-control-report");
+    packingRouter().applyRoutes(server,                                         "/v1/finishing-printing/quality-control/packings");
     v1finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/finishing-printing-sales-contract-reports");
 };
