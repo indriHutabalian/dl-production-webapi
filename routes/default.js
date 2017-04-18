@@ -42,10 +42,10 @@ var spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sale
 var weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-contract-router');
 
 var weavingSalesContractReportRouter = require('../src/routers/v1/sales/reports/weaving-sales-contract-report-router');
-
 var finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sales/reports/finishing-printing-sales-contract-report-router');
 var spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
 
+var finishingPrintingSalesContractByNumberRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-by-number');
 
 
 module.exports = function(server) {
@@ -77,4 +77,6 @@ module.exports = function(server) {
     fabricQualityControlRouter().applyRoutes(server,                          "/finishing-printing/quality-control/fabrics");
     packingRouter().applyRoutes(server,                                       "/finishing-printing/quality-control/packings");
     finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
+
+    finishingPrintingSalesContractByNumberRouter().applyRoutes(server,          "/sales/finishing-printing-sales-contract-by-number");
 };
