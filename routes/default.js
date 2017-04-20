@@ -46,6 +46,9 @@ var weavingSalesContractReportRouter = require('../src/routers/v1/sales/reports/
 var finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sales/reports/finishing-printing-sales-contract-report-router');
 var spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
 
+// INVENTORY
+var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
+
 
 
 module.exports = function(server) {
@@ -77,4 +80,6 @@ module.exports = function(server) {
     fabricQualityControlRouter().applyRoutes(server,                          "/finishing-printing/quality-control/fabrics");
     packingRouter().applyRoutes(server,                                       "/finishing-printing/quality-control/packings");
     finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
+    packingReceiptRouter().applyRoutes(server,                                "/inventory/packing-receipts");
+    
 };
