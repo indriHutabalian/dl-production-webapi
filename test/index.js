@@ -47,6 +47,7 @@ describe('@dl-production-webapi', function() {
     test("/v1/finishing-printing/kanbans", "./routes/production/finishing-printing/kanban");
     test("/v1/finishing-printing/daily-operations", "./routes/production/finishing-printing/daily-operation");
     test("/v1/finishing-printing/quality-control/fabrics", "./routes/production/finishing-printing/fabric-quality-control");
-    test("/v1/finishing-printing/quality-control/packings", "./routes/production/finishing-printing/packing");
-    test("/v1/inventory/packing-receipts", "./routes/inventory/packing-receipt");
+    test("/v1/finishing-printing/quality-control/packings", "./routes/production/finishing-printing/packing"); 
+    test("/v1/inventory/packing-receipts", "./routes/inventory/packing-receipt"); 
+    test("/v1/finishing-printing/quality-control/inspection-lot-colors", "./routes/production/finishing-printing/inspection-lot-color"); 
 });
