@@ -29,7 +29,9 @@ function getRouter() {
                     response.send(200, result);
                 })
                 .catch(e => {
-                    response.send(500, "gagal ambil data");
+                    var result = resultFormatter.ok(apiVersion, 200, e);
+                    result.info = e;
+                    response.send(200, result);
                 });
         })
             .catch(e => {
