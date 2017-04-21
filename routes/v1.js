@@ -36,6 +36,10 @@ var v1MonitoringKanbanRouter= require('../src/routers/v1/finishing-printing/moni
 var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
 var packingRouter= require('../src/routers/v1/finishing-printing/packing-router');
 
+// INSPECTION-LOT-COLOR
+var v1InspectionLotColorRouter= require('../src/routers/v1/finishing-printing/inspection-lot-color-router');
+var v1InspectionLotColorReportRouter = require('../src/routers/v1/finishing-printing/reports/inspection-lot-color-report-router');
+
 //SALES CONTRACT
 var v1finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
 var v1spinningSalesContractRouter = require('../src/routers/v1/sales/spinning-sales-contract-router');
@@ -47,6 +51,8 @@ var v1finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sa
 var v1spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
 var v1finishingPrintingSalesContractByNumberRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-by-number-router');
 
+// INVENTORY
+var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
 
 module.exports = function(server) {
     v1WindingQualitySamplingRouter().applyRoutes(server,                        "/v1/spinning/winding/winding-quality-samplings");
@@ -78,4 +84,8 @@ module.exports = function(server) {
     packingRouter().applyRoutes(server,                                         "/v1/finishing-printing/quality-control/packings");
     v1finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/finishing-printing-sales-contract-reports");
     v1finishingPrintingSalesContractByNumberRouter().applyRoutes(server,        "/v1/sales/finishing-printing-sales-contract-by-number");
+    
+    packingReceiptRouter().applyRoutes(server,                                  "/v1/inventory/packing-receipts"); 
+    v1InspectionLotColorRouter().applyRoutes(server,                            "/v1/finishing-printing/inspection-lot-colors");
+    v1InspectionLotColorReportRouter().applyRoutes(server,                      "/v1/finishing-printing/reports/inspection-lot-color"); 
 };
