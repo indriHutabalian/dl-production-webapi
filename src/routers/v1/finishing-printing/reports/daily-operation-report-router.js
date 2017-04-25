@@ -9,7 +9,7 @@ const apiVersion = '1.0.0';
 function getRouter() {
 
     var defaultOrder = {
-        //"_updatedDate": -1
+        "_updatedDate": -1
     };
 
     var getManager = (user) => {
