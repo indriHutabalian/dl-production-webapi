@@ -34,6 +34,12 @@ var v1MonitoringKanbanRouter= require('../src/routers/v1/finishing-printing/moni
 
 // QUALITY-CONTROL/FABRIC
 var fabricQualityControlRouter= require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
+var v1fabricQualityControlReportRouter= require('../src/routers/v1/finishing-printing/reports/fabric-quality-control-report-router');
+var packingRouter= require('../src/routers/v1/finishing-printing/packing-router');
+
+// INSPECTION-LOT-COLOR
+var v1InspectionLotColorRouter= require('../src/routers/v1/finishing-printing/inspection-lot-color-router');
+var v1InspectionLotColorReportRouter = require('../src/routers/v1/finishing-printing/reports/inspection-lot-color-report-router');
 
 //SALES CONTRACT
 var v1finishingPrintingSalesContractRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-router');
@@ -44,7 +50,10 @@ var v1weavingSalesContractReportRouter = require('../src/routers/v1/sales/report
 
 var v1finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sales/reports/finishing-printing-sales-contract-report-router');
 var v1spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
+var v1finishingPrintingSalesContractByNumberRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-by-number-router');
 
+// INVENTORY
+var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
 
 module.exports = function(server) {
     v1WindingQualitySamplingRouter().applyRoutes(server,                        "/v1/spinning/winding/winding-quality-samplings");
@@ -62,7 +71,7 @@ module.exports = function(server) {
     v1spinningSalesContractRouter().applyRoutes(server,                         "/v1/sales/spinning-sales-contracts");
     v1spinningSalesContractReportRouter().applyRoutes(server,                   "/v1/sales/reports/spinning-sales-contract-reports");
     v1weavingSalesContractRouter().applyRoutes(server,                          "/v1/sales/weaving-sales-contracts");
-    v1weavingSalesContractReportRouter().applyRoutes(server,                    "/v1/sales/reports/weaving-sales-contract-report")
+    v1weavingSalesContractReportRouter().applyRoutes(server,                    "/v1/sales/reports/weaving-sales-contract-report");
     v1DailyOperationRouter().applyRoutes(server,                                "/v1/finishing-printing/daily-operations");
     v1DailyOperationReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/daily-operation-report");
     v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
@@ -73,5 +82,12 @@ module.exports = function(server) {
     v1MonitoringKanbanRouter().applyRoutes(server,                              "/v1/finishing-printing/monitoring-kanbans");
     v1KanbanRouter().applyRoutes(server,                                        "/v1/finishing-printing/kanbans");
     fabricQualityControlRouter().applyRoutes(server,                            "/v1/finishing-printing/quality-control/fabrics");
+    packingRouter().applyRoutes(server,                                         "/v1/finishing-printing/quality-control/packings");
     v1finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/v1/finishing-printing/reports/finishing-printing-sales-contract-reports");
+    v1finishingPrintingSalesContractByNumberRouter().applyRoutes(server,        "/v1/sales/finishing-printing-sales-contract-by-number");
+    
+    packingReceiptRouter().applyRoutes(server,                                  "/v1/inventory/packing-receipts"); 
+    v1InspectionLotColorRouter().applyRoutes(server,                            "/v1/finishing-printing/inspection-lot-colors");
+    v1InspectionLotColorReportRouter().applyRoutes(server,                      "/v1/finishing-printing/reports/inspection-lot-color"); 
+    v1fabricQualityControlReportRouter().applyRoutes(server,                    "/v1/finishing-printing/reports/fabric-quality-control-report"); 
 };
