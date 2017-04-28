@@ -33,9 +33,11 @@ var kanbanRouter = require('../src/routers/v1/finishing-printing/kanban-router')
 var monitoringKanbanRouter = require('../src/routers/v1/finishing-printing/monitoring-kanban-router');
 
 // QUALITY-CONTROL/FABRIC
+
 var fabricQualityControlRouter = require('../src/routers/v1/finishing-printing/fabric-quality-control-router');
 var packingRouter = require('../src/routers/v1/finishing-printing/packing-router');
 var packingReportRouter = require('../src/routers/v1/finishing-printing/reports/packing-report-router');
+var fabricQualityControlReportRouter= require('../src/routers/v1/finishing-printing/reports/fabric-quality-control-report-router');
 
 // INSPECTION-LOT-COLOR
 var inspectionLotColorRouter = require('../src/routers/v1/finishing-printing/inspection-lot-color-router');
@@ -49,45 +51,46 @@ var weavingSalesContractRouter = require('../src/routers/v1/sales/weaving-sales-
 var weavingSalesContractReportRouter = require('../src/routers/v1/sales/reports/weaving-sales-contract-report-router');
 
 var finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sales/reports/finishing-printing-sales-contract-report-router');
+var finishingPrintingSalesContractByNumberRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-by-number-router');
 var spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
 
 // INVENTORY
 var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
 
-
-
-module.exports = function (server) {
-    windingQualitySamplingRouter().applyRoutes(server, "/spinning/winding/winding-quality-samplings");
-    windingMachingByUnitRouter().applyRoutes(server, "/spinning/winding/machine-by-units");
-    windingQualitySamplingReportRouter().applyRoutes(server, "/spinning/winding/reports/winding-quality-samplings");
-
-    windingProductionOutputByUserRouter().applyRoutes(server, "/spinning/winding/production-outputs/by-user");
-    lotMachineByProductMachineRouter().applyRoutes(server, "/spinning/winding/search-lots");
-    dailySpinningProductionReportRouter().applyRoutes(server, "/spinning/winding/reports/daily-production");
-    productionOrderRouter().applyRoutes(server, "/sales/production-orders");
-    productionOrderReportRouter().applyRoutes(server, "/sales/reports/production-order-report");
-    materialRouter().applyRoutes(server, "/sales/materials");
-    finishingPrintingSalesContractRouter().applyRoutes(server, "/sales/finishing-printing-sales-contracts");
-    spinningSalesContractRouter().applyRoutes(server, "/sales/spinning-sales-contracts");
-    spinningSalesContractReportRouter().applyRoutes(server, "/sales/reports/spinning-sales-contract-reports");
-    weavingSalesContractRouter().applyRoutes(server, "/sales/weaving-sales-contracts");
-    weavingSalesContractReportRouter().applyRoutes(server, "/sales/reports/weaving-sales-contract-report");
-    DailyOperationRouter().applyRoutes(server, "/finishing-printing/daily-operations");
-    DailyOperationReportRouter().applyRoutes(server, "/finishing-printing/reports/daily-operation-report");
-    monitoringEventRouter().applyRoutes(server, "/finishing-printing/monitoring-events");
-    monitoringEventReportRouter().applyRoutes(server, "/finishing-printing/reports/monitoring-events");
-    monitoringSpecificationMachineRouter().applyRoutes(server, "/finishing-printing/monitoring-specification-machine");
-    monitoringSpecificationMachineReportByEventRouter().applyRoutes(server, "/finishing-printing/reports/monitoring-specification-machine/by-event");
-    monitoringSpecificationMachineReportRouter().applyRoutes(server, "/finishing-printing/reports/monitoring-specification-machine")
-    monitoringKanbanRouter().applyRoutes(server, "/finishing-printing/monitoring-kanbans");
-    kanbanRouter().applyRoutes(server, "/finishing-printing/kanbans");
-    inspectionLotColorRouter().applyRoutes(server, "/finishing-printing/inspection-lot-colors");
-    inspectionLotColorReportRouter().applyRoutes(server, "/finishing-printing/reports/inspection-lot-color");
-
-    fabricQualityControlRouter().applyRoutes(server, "/finishing-printing/quality-control/fabrics");
-    packingRouter().applyRoutes(server, "/finishing-printing/quality-control/packings");
-    finishingPrintingSalesContractReportRouter().applyRoutes(server, "/finishing-printing/reports/finishing-printing-sales-contract-reports");
-    packingReceiptRouter().applyRoutes(server, "/inventory/packing-receipts");
+module.exports = function(server) {
+    windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
+    windingMachingByUnitRouter().applyRoutes(server,                          "/spinning/winding/machine-by-units");
+    windingQualitySamplingReportRouter().applyRoutes(server,                  "/spinning/winding/reports/winding-quality-samplings");
+    
+    windingProductionOutputByUserRouter().applyRoutes(server,                 "/spinning/winding/production-outputs/by-user");
+    lotMachineByProductMachineRouter().applyRoutes(server,                    "/spinning/winding/search-lots");
+    dailySpinningProductionReportRouter().applyRoutes(server,                 "/spinning/winding/reports/daily-production");
+    productionOrderRouter().applyRoutes(server,                               "/sales/production-orders");
+    productionOrderReportRouter().applyRoutes(server,                         "/sales/reports/production-order-report");
+    materialRouter().applyRoutes(server,                                      "/sales/materials");
+    finishingPrintingSalesContractRouter().applyRoutes(server,                "/sales/finishing-printing-sales-contracts");
+    spinningSalesContractRouter().applyRoutes(server,                         "/sales/spinning-sales-contracts");
+    spinningSalesContractReportRouter().applyRoutes(server,                   "/sales/reports/spinning-sales-contract-reports");
+    weavingSalesContractRouter().applyRoutes(server,                          "/sales/weaving-sales-contracts");
+    weavingSalesContractReportRouter().applyRoutes(server,                    "/sales/reports/weaving-sales-contract-report");
+    DailyOperationRouter().applyRoutes(server,                                "/finishing-printing/daily-operations");
+    DailyOperationReportRouter().applyRoutes(server,                          "/finishing-printing/reports/daily-operation-report");
+    monitoringEventRouter().applyRoutes(server,                               "/finishing-printing/monitoring-events");
+    monitoringEventReportRouter().applyRoutes(server,                         "/finishing-printing/reports/monitoring-events");
+    monitoringSpecificationMachineRouter().applyRoutes(server,                "/finishing-printing/monitoring-specification-machine");
+    monitoringSpecificationMachineReportByEventRouter().applyRoutes(server,   "/finishing-printing/reports/monitoring-specification-machine/by-event");
+    monitoringSpecificationMachineReportRouter().applyRoutes(server,          "/finishing-printing/reports/monitoring-specification-machine")
+    monitoringKanbanRouter().applyRoutes(server,                              "/finishing-printing/monitoring-kanbans");
+    kanbanRouter().applyRoutes(server,                                        "/finishing-printing/kanbans");
+    inspectionLotColorRouter().applyRoutes(server,                            "/finishing-printing/inspection-lot-colors");
+    inspectionLotColorReportRouter().applyRoutes(server,                      "/finishing-printing/reports/inspection-lot-color");
+    
+    fabricQualityControlRouter().applyRoutes(server,                          "/finishing-printing/quality-control/fabrics");
+    packingRouter().applyRoutes(server,                                       "/finishing-printing/quality-control/packings");
+    finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
+    finishingPrintingSalesContractByNumberRouter().applyRoutes(server,        "/sales/finishing-printing-sales-contract-by-number");
+    packingReceiptRouter().applyRoutes(server,                                "/inventory/packing-receipts");
+    fabricQualityControlReportRouter().applyRoutes(server,                  "/finishing-printing/reports/fabric-quality-control-report");
     packingReportRouter().applyRoutes(server,"/finishing-printing/reports/packings")
 
 };
