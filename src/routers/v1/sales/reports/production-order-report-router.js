@@ -52,7 +52,8 @@ function getRouter() {
                                 item["Satuan Detail"] = order.uomDetail;
                                 item["Tanggal Delivery"] = moment(new Date(order.deliveryDate)).format(dateFormat);
                                 item["Staff Penjualan"] = `${firstname} ${lastname}`;
-                                item["Status"] = "";
+                                item["Status"] = order.status;
+                                item["Detail"] = order.detail;
                                 data.push(item);
                             }
                             var options = {
@@ -73,7 +74,8 @@ function getRouter() {
                                 "Satuan Detail" : "string",
                                 "Tanggal Delivery" : "string",
                                 "Staff Penjualan" : "string",
-                                "Status" : "string"
+                                "Status" : "string",
+                                "Detail": "string"
                             };
                             response.xls(`MONITORING SURAT ORDER PRODUKSI.xlsx`, data, options);
                         }
