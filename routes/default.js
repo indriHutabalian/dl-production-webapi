@@ -57,6 +57,7 @@ var spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports
 
 // INVENTORY
 var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
+var packingReceiptReportRouter = require('../src/routers/v1/inventory/reports/packing-receipt-report-router');
 
 module.exports = function(server) {
     windingQualitySamplingRouter().applyRoutes(server,                        "/spinning/winding/winding-quality-samplings");
@@ -93,7 +94,8 @@ module.exports = function(server) {
     finishingPrintingSalesContractReportRouter().applyRoutes(server,          "/finishing-printing/reports/finishing-printing-sales-contract-reports");
     finishingPrintingSalesContractByNumberRouter().applyRoutes(server,        "/sales/finishing-printing-sales-contract-by-number");
     packingReceiptRouter().applyRoutes(server,                                "/inventory/packing-receipts");
-    fabricQualityControlReportRouter().applyRoutes(server,                  "/finishing-printing/reports/fabric-quality-control-report");
-    packingReportRouter().applyRoutes(server,"/finishing-printing/reports/packings")
+    packingReceiptReportRouter().applyRoutes(server,                          "/inventory/reports/packing-receipts");
+    fabricQualityControlReportRouter().applyRoutes(server,                    "/finishing-printing/reports/fabric-quality-control-report");
+    packingReportRouter().applyRoutes(server,                                 "/finishing-printing/reports/packings")
 
 };

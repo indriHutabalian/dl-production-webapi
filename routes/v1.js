@@ -57,6 +57,7 @@ var v1finishingPrintingSalesContractByNumberRouter = require('../src/routers/v1/
 
 // INVENTORY
 var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
+var packingReceiptReportRouter = require('../src/routers/v1/inventory/reports/packing-receipt-report-router');
 
 module.exports = function(server) {
     v1WindingQualitySamplingRouter().applyRoutes(server,                        "/v1/spinning/winding/winding-quality-samplings");
@@ -68,7 +69,7 @@ module.exports = function(server) {
     v1DailySpinningProductionReportRouter().applyRoutes(server,                 "/v1/spinning/winding/reports/daily-production");
     
     v1ProductionOrderRouter().applyRoutes(server,                               "/v1/sales/production-orders");
-    v1ProductionOrderDetailReportRouter().applyRoutes(server,                         "/v1/sales/reports/production-order-report/details");
+    v1ProductionOrderDetailReportRouter().applyRoutes(server,                   "/v1/sales/reports/production-order-report/details");
     v1ProductionOrderReportRouter().applyRoutes(server,                         "/v1/sales/reports/production-order-report");
     v1MaterialRouter().applyRoutes(server,                                      "/v1/sales/materials");
     v1finishingPrintingSalesContractRouter().applyRoutes(server,                "/v1/sales/finishing-printing-sales-contracts");
@@ -95,6 +96,7 @@ module.exports = function(server) {
 
     
     packingReceiptRouter().applyRoutes(server,                                  "/v1/inventory/packing-receipts"); 
+    packingReceiptReportRouter().applyRoutes(server,                            "/v1/inventory/reports/packing-receipts"); 
     v1InspectionLotColorRouter().applyRoutes(server,                            "/v1/finishing-printing/inspection-lot-colors");
     v1InspectionLotColorReportRouter().applyRoutes(server,                      "/v1/finishing-printing/reports/inspection-lot-color"); 
     v1fabricQualityControlReportRouter().applyRoutes(server,                    "/v1/finishing-printing/reports/fabric-quality-control-report"); 
