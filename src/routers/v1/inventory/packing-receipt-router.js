@@ -1,6 +1,9 @@
-var Manager = require("dl-module").managers.production.finishingPrinting.DailyOperationManager;
+var Manager = require("dl-module").managers.inventory.finishingPrinting.FPPackingReceiptManager;
 var JwtRouterFactory = require("../../jwt-router-factory");
+var resultFormatter = require("../../../result-formatter");
+var db = require("../../../db");
 const apiVersion = '1.0.0';
+
 
 function getRouter() {
     var router = JwtRouterFactory(Manager, {
@@ -11,4 +14,5 @@ function getRouter() {
     });
     return router;
 }
+
 module.exports = getRouter;

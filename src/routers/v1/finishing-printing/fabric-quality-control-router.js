@@ -1,8 +1,8 @@
-const apiVersion = '1.0.0';
-var Manager = require("dl-module").managers.sales.ProductionOrderManager;
+var Manager = require("dl-module").managers.production.finishingPrinting.FabricQualityControlManager;
+var JwtRouterFactory = require("../../jwt-router-factory");
 var resultFormatter = require("../../../result-formatter");
 var db = require("../../../db");
-var JwtRouterFactory = require("../../jwt-router-factory");
+const apiVersion = '1.0.0';
 
 var handlePdfRequest = function (request, response, next) {
     var user = request.user;
@@ -13,15 +13,16 @@ var handlePdfRequest = function (request, response, next) {
             manager = new Manager(db, user);
             return manager.getSingleByIdOrDefault(id);
         })
-        .then((productionOrder) => {
-            manager.pdf(productionOrder._id)
-                .then((productionOrderDocBinary) => {
+        .then((qualityControl) => {
+            var filename = qualityControl.code;
+            manager.pdf(qualityControl)
+                .then((qualityControlDocBinary) => {
                     response.writeHead(200, {
                         "Content-Type": "application/pdf",
-                        "Content-Disposition": `attachment; filename = ${productionOrder.orderNo}.pdf`,
-                        "Content-Length": productionOrderDocBinary.length
+                        "Content-Disposition": `attachment; filename = ${filename}.pdf`,
+                        "Content-Length": qualityControlDocBinary.length
                     });
-                    response.end(productionOrderDocBinary);
+                    response.end(qualityControlDocBinary);
                 })
                 .catch((e) => {
                     var error = resultFormatter.fail(apiVersion, 400, e);

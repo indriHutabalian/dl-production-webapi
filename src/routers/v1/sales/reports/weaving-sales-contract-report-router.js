@@ -1,6 +1,6 @@
 var Router = require('restify-router').Router;
 var db = require("../../../../db");
-var DailyOperationManager = require("dl-module").managers.production.finishingPrinting.DailyOperationManager;
+var WeavingSalesContractManager = require("dl-module").managers.sales.WeavingSalesContractManager;
 var resultFormatter = require("../../../../result-formatter");
 
 var passport = require('../../../../passports/jwt-passport');
@@ -15,7 +15,7 @@ function getRouter() {
     var getManager = (user) => {
         return db.get()
             .then((db) => {
-                return Promise.resolve(new DailyOperationManager(db, user));
+                return Promise.resolve(new WeavingSalesContractManager(db, user));
             });
     };
 
@@ -26,11 +26,11 @@ function getRouter() {
         var query = request.query;
         query.order = Object.assign({}, defaultOrder, query.order);
 
-        var dailyOperationManager = {};
+        var weavingSalesContractManager = {};
         getManager(user)
             .then((manager) => {
-                dailyOperationManager = manager;
-                return dailyOperationManager.getDailyOperationReport(query);
+                weavingSalesContractManager = manager;
+                return weavingSalesContractManager.getWeavingSalesContractReport(query);
             })
             .then(docs => {
                 var result = resultFormatter.ok(apiVersion, 200, docs.data);
@@ -43,7 +43,7 @@ function getRouter() {
                     response.send(result.statusCode, result);
                 }
                 else{
-                    dailyOperationManager.getXls(result, query)
+                    weavingSalesContractManager.getXls(result, query)
                         .then(xls => {
                             response.xls(xls.name, xls.data, xls.options)
                         });
