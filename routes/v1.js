@@ -20,7 +20,7 @@ var v1MaterialRouter = require('../src/routers/v1/sales/material-router');
 var v1DailyOperationRouter = require('../src/routers/v1/finishing-printing/daily-operation-router');
 var v1DailyOperationReportRouter = require('../src/routers/v1/finishing-printing/reports/daily-operation-report-router');
 
-var v1BadOutputRouter = require('../src/routers/v1/finishing-printing/reports/bad-output');
+var v1DailyOperationBadOuputReportRouter = require('../src/routers/v1/finishing-printing/reports/bad-output-report-router');
 
 //MONITORING EVENT
 var v1MonitoringEventRouter = require('../src/routers/v1/finishing-printing/monitoring-event-router');
@@ -86,7 +86,7 @@ module.exports = function(server) {
     v1DailyOperationReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/daily-operation-report");
     v1MonitoringEventRouter().applyRoutes(server,                               "/v1/finishing-printing/monitoring-events");
 
-  v1BadOutputRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/bad-output");
+  v1DailyOperationBadOuputReportRouter().applyRoutes(server,                          "/v1/finishing-printing/reports/bad-output-report");
 
     v1MonitoringEventReportRouter().applyRoutes(server,                         "/v1/finishing-printing/reports/monitoring-events");
     v1MonitoringSpecificationMachineRouter().applyRoutes(server,                "/v1/finishing-printing/monitoring-specification-machine");
