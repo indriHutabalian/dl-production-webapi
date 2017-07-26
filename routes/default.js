@@ -58,6 +58,12 @@ var finishingPrintingSalesContractReportRouter = require('../src/routers/v1/sale
 var finishingPrintingSalesContractByNumberRouter = require('../src/routers/v1/sales/finishing-printing-sales-contract-by-number-router');
 var spinningSalesContractReportRouter = require('../src/routers/v1/sales/reports/spinning-sales-contract-report-router');
 
+// SALES DEAL STATUS
+var dealTrackingBoardRouter = require('../src/routers/v1/sales/deal-tracking-board-router');
+var dealTrackingStageRouter = require('../src/routers/v1/sales/deal-tracking-stage-router');
+var dealTrackingDealRouter = require('../src/routers/v1/sales/deal-tracking-deal-router');
+var dealTrackingActivityRouter = require('../src/routers/v1/sales/deal-tracking-activity-router');
+
 // INVENTORY
 var packingReceiptRouter = require('../src/routers/v1/inventory/packing-receipt-router');
 var packingReceiptReportRouter = require('../src/routers/v1/inventory/reports/packing-receipt-report-router');
@@ -104,5 +110,8 @@ module.exports = function(server) {
     fabricQualityControlReportRouter().applyRoutes(server,                    "/finishing-printing/reports/fabric-quality-control-report");
     packingReportRouter().applyRoutes(server,                                 "/finishing-printing/reports/packings")
 
-
+    dealTrackingBoardRouter().applyRoutes(server,                              "/sales/deal-tracking-boards");
+    dealTrackingStageRouter().applyRoutes(server,                              "/sales/deal-tracking-stages");
+    dealTrackingDealRouter().applyRoutes(server,                               "/sales/deal-tracking-deals");
+    dealTrackingActivityRouter().applyRoutes(server,                           "/sales/deal-tracking-activities");
 };
