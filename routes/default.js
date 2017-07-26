@@ -44,6 +44,10 @@ var packingReportRouter = require('../src/routers/v1/finishing-printing/reports/
 
 var fabricQualityControlReportRouter= require('../src/routers/v1/finishing-printing/reports/fabric-quality-control-report-router');
 
+//MASTER
+var buyerRouter = require("../src/routers/v1/master/buyer-router");
+var materialConstructionRouter = require("../src/routers/v1/master/material-construction-router");
+
 // INSPECTION-LOT-COLOR
 var inspectionLotColorRouter= require('../src/routers/v1/finishing-printing/inspection-lot-color-router');
 var inspectionLotColorReportRouter = require('../src/routers/v1/finishing-printing/reports/inspection-lot-color-report-router');
@@ -110,6 +114,9 @@ module.exports = function(server) {
     fabricQualityControlReportRouter().applyRoutes(server,                    "/finishing-printing/reports/fabric-quality-control-report");
     packingReportRouter().applyRoutes(server,                                 "/finishing-printing/reports/packings")
 
+    buyerRouter().applyRoutes(server,                                 "/master/buyer")
+    materialConstructionRouter().applyRoutes(server,                                 "/master/material-construction")
+  
     dealTrackingBoardRouter().applyRoutes(server,                              "/sales/deal-tracking-boards");
     dealTrackingStageRouter().applyRoutes(server,                              "/sales/deal-tracking-stages");
     dealTrackingDealRouter().applyRoutes(server,                               "/sales/deal-tracking-deals");
