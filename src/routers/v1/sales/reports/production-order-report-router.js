@@ -46,6 +46,8 @@ function getRouter() {
                             if (order.firstname) firstname = order.firstname;
                             if (order.lastname) lastname = order.lastname;
                             item["No"] = index;
+                            item["Status"] = order.status;
+                            item["Detail"] = order.detail;
                             item["Nomor Sales Contract"] = order.salesContractNo;
                             item["Jumlah di Sales Contract (meter)"] = order.orderQuantity;
                             item["Nomor Surat Order Produksi"] = order.orderNo;
@@ -59,8 +61,6 @@ function getRouter() {
                             item["Staff Penjualan"] = order.staffName;
                             item["Tanggal Terima Order"] = moment(new Date(order._createdDate)).format(dateFormat);
                             item["Tanggal Permintaan Pengiriman"] = moment(new Date(order.deliveryDate)).format(dateFormat);
-                            item["Status"] = order.status;
-                            item["Detail"] = order.detail;
                             data.push(item);
                         }
                         var options = {
